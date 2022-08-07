@@ -5328,6 +5328,11 @@ void semantic_analyze(CodeGen *g) {
         for (; g->fn_defs_index < g->fn_defs.length; g->fn_defs_index += 1) {
             ZigFn *fn_entry = g->fn_defs.at(g->fn_defs_index);
             g->trace_err = nullptr;
+
+            if (strcmp(fn_entry->symbol_name.list.items, "main") == 0 || strcmp(fn_entry->symbol_name.list.items, "autoAssign") == 0) {
+	    	fprintf(stderr, "%s \n", fn_entry->symbol_name.list.items);
+	    }
+
             analyze_fn_body(g, fn_entry);
         }
     }

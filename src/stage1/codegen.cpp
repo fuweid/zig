@@ -10433,6 +10433,7 @@ static void gen_root_source(CodeGen *g) {
         exit(1);
     }
 
+    fprintf(stderr, "%s\n", source_code->list.items);
     ZigType *root_import_alias = add_source_file(g, g->main_pkg, resolved_path, source_code, SourceKindRoot);
     assert(root_import_alias == g->root_import);
 
